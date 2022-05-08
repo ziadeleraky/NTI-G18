@@ -66,43 +66,43 @@
 // alert(calc(x,y,op))
 
 
-const  getDataFromUser= (msg) => prompt(msg).trim()
-const tempTypes = ["K", "C", "F"]
-const fTok = (val) => (val - 32 ) * 5/9 + 273.15
-const fToc = (val) => (val - 32) * 5/9
-const cTok = (val) => val + 273.15
-const cTof = (val) => (val * 9/5) + 32
-const kToc = (val) => val-273.15
-const kTof = (val) => (val - 273.15) * 9/5 + 32
+// const  getDataFromUser= (msg) => prompt(msg).trim()
+// const tempTypes = ["K", "C", "F"]
+// const fTok = (val) => (val - 32 ) * 5/9 + 273.15
+// const fToc = (val) => (val - 32) * 5/9
+// const cTok = (val) => val + 273.15
+// const cTof = (val) => (val * 9/5) + 32
+// const kToc = (val) => val-273.15
+// const kTof = (val) => (val - 273.15) * 9/5 + 32
 
-const calculateTemp = (temp)=>{
-    let myTempType = temp[temp.length-1]
-    if(!tempTypes.includes(myTempType))
-        return "invalid temp type"
-    let myTempVal = Number(temp.slice(0, temp.length-1))
-    let result = ""
-    switch(myTempType){
-        case "K":
-            result+= `In K  myTempVal = ${myTempVal} 
-In C my tempVal = ${kToc(myTempVal)}
-In F my tempVal = ${kToF(myTempVal)}`
-            break;
-        case "C":
-            result+= `In C  myTempVal = ${myTempVal} 
-In K my tempVal = ${cTok(myTempVal)}
-In F my tempVal = ${cTof(myTempVal)}`
+// const calculateTemp = (temp)=>{
+//     let myTempType = temp[temp.length-1]
+//     if(!tempTypes.includes(myTempType))
+//         return "invalid temp type"
+//     let myTempVal = Number(temp.slice(0, temp.length-1))
+//     let result = ""
+//     switch(myTempType){
+//         case "K":
+//             result+= `In K  myTempVal = ${myTempVal} 
+// In C my tempVal = ${kToc(myTempVal)}
+// In F my tempVal = ${kToF(myTempVal)}`
+//             break;
+//         case "C":
+//             result+= `In C  myTempVal = ${myTempVal} 
+// In K my tempVal = ${cTok(myTempVal)}
+// In F my tempVal = ${cTof(myTempVal)}`
             
-            break;
-        case "F":
-            result+= `In F  myTempVal = ${myTempVal} 
-In C my tempVal = ${fToc(myTempVal)}
-In K my tempVal = ${fTok(myTempVal)}`            
-            break;
-    }
-    return result
-}
-let temp = getDataFromUser("enter temp in 32C format").toUpperCase()
-alert(calculateTemp(temp))
+//             break;
+//         case "F":
+//             result+= `In F  myTempVal = ${myTempVal} 
+// In C my tempVal = ${fToc(myTempVal)}
+// In K my tempVal = ${fTok(myTempVal)}`            
+//             break;
+//     }
+//     return result
+// }
+// let temp = getDataFromUser("enter temp in 32C format").toUpperCase()
+// alert(calculateTemp(temp))
 
 
 
