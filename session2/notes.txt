@@ -1,0 +1,19 @@
+crud => create read update delete 
+
+tasks => title, content, status=> default false, due date, id=> unique number
+add task => title, content, due date => localstorge =>
+[
+    {id:"", title:"",...},
+    ....
+    ....
+]
+
+showAll
+show single
+change status 
+edit data
+delete
+
+
+json=> java script object notation
+{"name":"marwa"}
