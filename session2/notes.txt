@@ -17,3 +17,25 @@ delete
 
 json=> java script object notation
 {"name":"marwa"}
+
+
+bank => customers
+name, accNumber, balance
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
