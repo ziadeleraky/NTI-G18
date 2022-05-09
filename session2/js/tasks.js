@@ -49,17 +49,37 @@ const createMyOwnElements = (parent, element, classes, txt, attributes=[]) =>{
 const dataWrap = document.querySelector("#dataWrap")
 const showData = () => {
     const data = readFromStorage()
+    dataWrap.innerHTML=""
     const thead = createMyOwnElements(dataWrap, "thead", null, null)
     const tr = createMyOwnElements(thead, "tr", null, null)
     tableHeads.forEach( h => createMyOwnElements(tr, "th", null, h.viewEl))
     const tbody = createMyOwnElements(dataWrap, "tbody", null, null)
-    
-    data.forEach(task=>{
+    data.forEach((task, i)=>{
         const tr = createMyOwnElements(tbody, "tr", null, null)
         tableHeads.forEach( h => {
             if(h.el) createMyOwnElements(tr, "td", null, task[h.el])
         })
+        const td = createMyOwnElements(tr, "td", null, null)
+        const delBtn = createMyOwnElements(td, "button", "btn btn-danger mx-2", "delete")
+        delBtn.addEventListener("click", function(e){
+            data.splice(i, 1)
+            writeToStorage(data)
+            showData()
+        })
+        const showBtn = createMyOwnElements(td, "button", "btn btn-success mx-2", "show")
+        showBtn.addEventListener("click", function(e){
+            localStorage.setItem("id", i)
+            window.location.href="single.html"
+        })
+        const editBtn = createMyOwnElements(td, "button", "btn btn-warning mx-2", "edit")
+        const changeStatus = createMyOwnElements(td, "button", "btn btn-primary mx-2", "edit Status")
+        changeStatus.addEventListener("click", function(e){
+            data[i].status = !data[i].status
+            writeToStorage(data)
+            showData()
+        })
     })
+
 }
 if(dataWrap) showData()
 if(addForm){
@@ -79,3 +99,22 @@ if(addForm){
     })
     
 }
+const single_ele= document.querySelector("#single-ele")
+if(single_ele){
+    const itemId = localStorage.getItem("id")
+    if(!itemId) window.location.href="index.html"
+    const data = readFromStorage()
+    const myElement = data[itemId] 
+    if(!myElement) single_ele.innerHTML=`<div class="alert alert-danger"> Error in Loading</div>`
+    else{
+        single_ele.innerHTML=`
+        <div class="alert alert-primary">
+            <h4>${myElement.id}</h4>
+            <h6>${myElement.title}</h6>
+        </div>
+        
+        `
+    }
+}
+
+
