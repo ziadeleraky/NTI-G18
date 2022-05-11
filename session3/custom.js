@@ -51,7 +51,7 @@ apis.forEach(api=>{
 })
 
 
-handleAPi= async(urlKeyWord)=>{
-    let myResult = await (await fetch(`${mainURL}${urlKeyWord}`)).json()
-    console.log(myResult)
-}
+// handleAPi= async(urlKeyWord)=>{
+//     let myResult = await (await fetch(`${mainURL}${urlKeyWord}`)).json()
+//     console.log(myResult)
+// }
