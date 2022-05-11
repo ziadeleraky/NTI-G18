@@ -1,42 +1,31 @@
-//console.log("hello")
-// function x(){
-//     return function(){
-//         return function(){
-//             console.log("hello")
-//         }    
-//     }
-// }
-// x()()()
+const ApiURL = "https://jsonplaceholder.typicode.com/posts?_limit=10"
+// fetch(ApiURL).then((data)=>{
+//      console.log(data)
 
-//clousers
-const myClouser = (x) =>{
-    //let x = 5
-    return {
-        x,
-        upWord(){ x+=1; return x},
-        backWord() { x-=1; return x},
-        show(){return x}
+//     }).then()
+
+const getApiData = async(api, cb) =>{
+    try{
+        // const baseData = await fetch(ApiURL)
+        // const finalData = await baseData.json()
+        const finalData = await (await fetch(api)).json()
+        // return finalData
+       cb(finalData, false)
+    }
+    catch(e){
+        // console.log(e.message)
+        cb(false, e.message)
     }
 }
-const a = myClouser(5) //{x:5, upWord:function, back(), show()}
-console.log(a);
-console.log(a.upWord()); // global x = 6  {x:5, upWord:function, back(), show()}
-console.log(a.x); //x=5
-console.log(a.show())
-const b1 = myClouser(13)
 
-
-let a1 = 3
-const b = () => {
-    b=a1
-    b=7
-}
-b()
-console.log(a1)
-//callback
-
-//promises
-
-//then catch
-
-//async await
+// console.log(getApiData())
+getApiData(ApiURL, (result, error)=> {
+    if(result) {
+        console.log("success")
+        console.log(result)
+    }
+    else{
+        console.log("fee error")
+        console.log(error)
+    }
+})
