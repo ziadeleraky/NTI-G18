@@ -1,21 +1,43 @@
 //npm init --y
 // npm i yargs validator chalk@4.0.0
 const users = require('./controller/users')
+const heads = ["id", "name", "age", "email", "status", "createdAt"]
 const yargs = require("yargs")
 
 yargs.command({
     command:"add",
     describe:"add new user data",
     builder:{
-        id:{},
-        name:{},
-        email:{},
-        status:{},
-        age:{},
-        createdAt:{}
+        id:{
+            type:"number",
+            default: Date.now()
+        },
+        name:{
+            type:"string",
+            demandOption:true
+        },
+        email:{
+            type:"string",
+            demandOption:true
+        },
+        status:{
+            type:"boolean",
+            default:false
+        },
+        age:{
+            type:"number",
+            demandOption:true
+        },
+        createdAt:{
+            type:"date",
+            default:new Date()
+        }
     },
     handler: function(argv){
         console.log("add new user");
+        let userData = {}
+        heads.forEach(h=> userData[h]= argv[h])
+        users.addUser(userData)
     }
 })
 yargs.command({
