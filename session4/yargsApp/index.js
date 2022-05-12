@@ -45,6 +45,7 @@ yargs.command({
     describe:"show all users data",
     handler: function(){
         console.log("show all users");
+        users.allUsers()
     }
 })
 yargs.command({
