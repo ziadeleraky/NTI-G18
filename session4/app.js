@@ -26,8 +26,16 @@
 // console.log(__filename);
 
 // console.log(process.argv)
-let x = process.argv[2]
-x%2==0 ? console.log('even'): console.log("odd");;
+// let x = process.argv[2]
+// x%2==0 ? console.log('even'): console.log("odd");;
 
 //node app 5 / 3
+//  switch(process.argv[3])
+//  {
+//      case'*': console.log(+(process.argv[2])* +(process.argv[4]));break;
+//      case'/': console.log(+(process.argv[2]) / +(process.argv[4]));break;
+//      case'+': console.log(+(process.argv[2]) + +(process.argv[4]));break;
+//      case'-': console.log(+(process.argv[2]) - +(process.argv[4]));break;
+//      default: console.log('invalid op');
+//  }
 
