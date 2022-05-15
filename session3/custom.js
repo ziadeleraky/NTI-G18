@@ -31,8 +31,12 @@
 // })
 const mainURL = "https://jsonplaceholder.typicode.com/"
 const apis = [
-    {urlKeyWord: "posts", showKeyWord:"Posts Data", classes:"btn btn-danger mx-3"},
-    {urlKeyWord: "users", showKeyWord:"Users Data", classes:"btn btn-warning mx-3"},
+    {
+        urlKeyWord: "posts", 
+        showKeyWord:"Posts Data", 
+        classes:"btn btn-danger mx-3",
+        headers: ["userId", "id", "title", "body"]
+    },
     {urlKeyWord: "photos", showKeyWord:"Photos Data", classes:"btn btn-success mx-3"},
     {urlKeyWord: "todos", showKeyWord:"ToDos Data", classes:"btn btn-dark mx-3"}
 ]
@@ -47,6 +51,18 @@ apis.forEach(api=>{
     btn.addEventListener("click", async() => {
         let myResult = await (await fetch(`${mainURL}${api.urlKeyWord}`)).json()
         console.log(myResult)
+        const heads = document.querySelector("#heads")
+        api.headers.forEach(head=>{
+            console.log(head)
+            th = document.createElement("th")
+            th.innerText= head
+            heads.appendChild(th)
+        })
+        myResult.forEach(res=>{
+            api.headers.forEach(head=>{
+                console.log(res[head])
+            })
+        })
     })
 })
 

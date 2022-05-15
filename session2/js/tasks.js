@@ -72,6 +72,11 @@ const showData = () => {
             window.location.href="single.html"
         })
         const editBtn = createMyOwnElements(td, "button", "btn btn-warning mx-2", "edit")
+        editBtn.addEventListener("click", function(e){
+            localStorage.setItem("id", i)
+            window.location.href="edit.html"
+        })
+
         const changeStatus = createMyOwnElements(td, "button", "btn btn-primary mx-2", "edit Status")
         changeStatus.addEventListener("click", function(e){
             data[i].status = !data[i].status
@@ -116,5 +121,39 @@ if(single_ele){
         `
     }
 }
+// const tableHeads = [
+//     {el: "id", viewEl: "ID", hasDeafult:true, default: Date.now()},
+//     {el: "status", viewEl: "Is Finished", hasDeafult:true, default:false},
+//     {el: "title", viewEl: "Title", hasDeafult:false},
+//     {el: "content", viewEl: "Content", hasDeafult:false},
+//     {el: "dueDate", viewEl: "Deadline", hasDeafult:false},
+//     {el: "age", viewEl: "Age", hasDeafult:false},
+//     {el: null, viewEl: "Actions",hasDeafult:false}
+// ]
 
+const editForm= document.querySelector("#editForm")
+if(editForm){
+    const itemId = localStorage.getItem("id")
+    if(!itemId) window.location.href="index.html"
+    const data = readFromStorage()
+    const myElement = data[itemId] 
+    if(!myElement) single_ele.innerHTML=`<div class="alert alert-danger"> Error in Loading</div>`
+    else{
+        tableHeads.forEach(h=>{
+            if(h.el){
+                editForm.elements[h.el].value = myElement[h.el]
+            }
+        })
+    }
+    editForm.addEventListener("submit", (e)=>{
+        e.preventDefault()
+        tableHeads.forEach(h=>{
+            if(h.el){
+                data[itemId][h.el]= editForm.elements[h.el].value
+            }
+        })
+        writeToStorage(data)
+        window.location.href="index.html"
+    })
+}
 

@@ -40,29 +40,28 @@
 //      default: console.log('invalid op');
 //  }
 
-const yargs = require("yargs")
-yargs.command({
-    command:"add",
-    describe:"ADD NUMBERS",
-    builder:{
-        name:{
-            type:'string',
-            demandOption:true,
-            describe:"name is required"
-        },
-        age:{
-            type:'number',
-            demandOption:true,
-            describe:"age is required"
-        }
-    },
-    handler: function(argv){
-        // console.log("hello from yargs");
-        console.log(argv.name);
-    }
-})
-yargs.argv
-
+// const yargs = require("yargs")
+// yargs.command({
+//     command:"add",
+//     describe:"ADD NUMBERS",
+//     builder:{
+//         name:{
+//             type:'string',
+//             demandOption:true,
+//             describe:"name is required"
+//         },
+//         age:{
+//             type:'number',
+//             demandOption:true,
+//             describe:"age is required"
+//         }
+//     },
+//     handler: function(argv){
+//         // console.log("hello from yargs");
+//         console.log(argv.name);
+//     }
+// })
+// yargs.argv
 
 
 
