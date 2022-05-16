@@ -1,6 +1,9 @@
+const dealWithData = require("../helper/dealWithData.helper")
 const home = (req,res)=>{
+    const data = dealWithData.readFromJSON("database/user.json")
     res.render("home", {
-        pageTitle:"Home Page- User App"
+        pageTitle:"Home Page- User App",
+        data
     })
 }
 const add = (req, res)=>{

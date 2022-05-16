@@ -9,15 +9,17 @@
             <th>Actions</th>
         </thead>
         <tbody>
+            {{#each data}}
             <tr>
-                <td>1</td>
-                <td>Marwa</td>
+                <td>{{this.id}}</td>
+                <td>{{this.title}}</td>
                 <td>
                     <a href="#" class="btn btn-primary mx-3">Show</a>
                     <a href="#" class="btn btn-danger mx-3">Delete</a>
                     <a href="#" class="btn btn-success mx-3">Edit</a>
                 </td>
             </tr>
+            {{/each}}
         </tbody>
     </table>
 </section>
